@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09000f">
+<title>PC ZONE | Digital Store</title>
+
+<style>
+:root {
+    --bg:#08060d;
+    --card:#15101d;
+    --purple:#a855f7;
+    --blue:#00d9ff;
+    --pink:#ff35d3;
+    --text:#fff;
+    --muted:#aaa0b8;
+    --border:#342343;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin:0;
+    color:var(--text);
+    background:
+        radial-gradient(ellipse at top,#271044 0,transparent 55%),
+        var(--bg);
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+button,input,textarea,select {
+    font:inherit;
+}
+
+button,a {
+    -webkit-tap-highlight-color:transparent;
+}
+
+button {
+    cursor:pointer;
+}
+
+a {
+    color:white;
+    text-decoration:none;
+}
+
+header {
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:#090611ee;
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav {
+    max-width:1150px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:900;
+    font-size:22px;
+}
+
+.logo img {
+    width:46px;
+    height:46px;
+    border-radius:13px;
+    object-fit:cover;
+    border:1px solid var(--purple);
+}
+
+.container {
+    width:min(1150px,100%);
+    padding:22px 16px 55px;
+    margin:auto;
+}
+
+.btn {
+    padding:11px 15px;
+    border-radius:11px;
+    border:1px solid var(--border);
+    color:white;
+    background:#21152e;
+    font-weight:bold;
+}
+
+.btn:hover {
+    border-color:var(--blue);
+}
+
+.btn-primary {
+    border:0;
+    color:white;
+    background:linear-gradient(110deg,#8b2cff,#d02aff,#087fff);
+    box-shadow:0 0 20px #a855f733;
+}
+
+.btn-danger {
+    background:#4b1025;
+    border-color:#a51e4c;
+}
+
+.btn-block {
+    width:100%;
+    margin-top:8px;
+}
+
+.hero {
+    min-height:260px;
+    padding:35px 25px;
+    border:1px solid #60318a;
+    border-radius:22px;
+    background:
+        linear-gradient(90deg,#090611f5,#09061191),
+        url("pc-zone.png") center/cover;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.badge {
+    color:var(--blue);
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+h1 {
+    font-size:clamp(34px,7vw,64px);
+    line-height:1.12;
+    margin:15px 0;
+}
+
+.gradient-text {
+    background:linear-gradient(90deg,#d76bff,#00d9ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p {
+    color:#d2c6de;
+    line-height:1.8;
+    max-width:600px;
+}
+
+.banner {
+    margin-top:18px;
+    padding:20px;
+    border-radius:17px;
+    background:linear-gradient(110deg,#301044,#11142b);
+    border:1px solid #593278;
+}
+
+.stats {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:16px;
+    min-width:0;
+}
+
+.stat strong {
+    display:block;
+    color:var(--blue);
+    font-size:22px;
+    overflow-wrap:anywhere;
+}
+
+.stat small {
+    color:var(--muted);
+}
+
+.section {
+    margin-top:38px;
+    scroll-margin-top:85px;
+}
+
+.section h2 {
+    font-size:25px;
+}
+
+.section h2 span {
+    color:var(--purple);
+}
+
+.shortcuts {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+}
+
+.shortcut {
+    display:block;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:18px;
+}
+
+.shortcut:hover {
+    border-color:var(--purple);
+}
+
+.shortcut .icon {
+    font-size:28px;
+    color:var(--blue);
+}
+
+.shortcut strong {
+    display:block;
+    margin-top:10px;
+}
+
+.shortcut small {
+    display:block;
+    color:var(--muted);
+    margin-top:6px;
+}
+
+.products {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:14px;
+}
+
+.product {
+    min-width:0;
+    overflow:hidden;
+    background:linear-gradient(150deg,#1c1427,#0d0a13);
+    border:1px solid var(--border);
+    border-radius:17px;
+}
+
+.product img {
+    width:100%;
+    height:175px;
+    object-fit:cover;
+    background:#21132f;
+    display:block;
+}
+
+.product-body {
+    padding:14px;
+}
+
+.product h3 {
+    overflow-wrap:anywhere;
+    margin:0 0 10px;
+}
+
+.product p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+    overflow-wrap:anywhere;
+}
+
+.price {
+    color:var(--blue);
+    font-size:22px;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.admin-panel {
+    display:none;
+    background:#1b1027;
+    border:1px solid var(--purple);
+    border-radius:17px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.admin-on .admin-panel {
+    display:block;
+}
+
+.admin-on .edit-only {
+    display:block;
+}
+
+.edit-only {
+    display:none;
+}
+
+.admin-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+.field {
+    margin:12px 0;
+}
+
+label {
+    display:block;
+    font-size:13px;
+    color:#c7b7d6;
+    margin-bottom:7px;
+}
+
+input,textarea,select {
+    width:100%;
+    padding:12px;
+    border:1px solid #473454;
+    border-radius:10px;
+    background:#0b0810;
+    color:white;
+}
+
+textarea {
+    min-height:85px;
+    resize:vertical;
+}
+
+hr {
+    border:0;
+    border-top:1px solid var(--border);
+    margin:20px 0;
+}
+
+.modal {
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:30;
+    background:#000d;
+    padding:15px;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal.show {
+    display:flex;
+}
+
+.dialog {
+    width:100%;
+    max-width:520px;
+    max-height:90vh;
+    overflow:auto;
+    padding:22px;
+    border-radius:18px;
+    border:1px solid #563474;
+    background:#120d1b;
+}
+
+.dialog h2 {
+    margin-top:0;
+}
+
+.dialog p {
+    color:#c2b5cf;
+    line-height:1.7;
+    overflow-wrap:anywhere;
+}
+
+.dialog-actions {
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.dialog-actions button {
+    flex:1;
+}
+
+.notice {
+    padding:13px;
+    background:#21132f;
+    border:1px solid var(--purple);
+    border-radius:12px;
+    margin:12px 0;
+    overflow-wrap:anywhere;
+}
+
+.order-item {
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-top:10px;
+    background:#0d0913;
+    overflow-wrap:anywhere;
+}
+
+.order-item small {
+    color:var(--muted);
+    line-height:1.8;
+}
+
+footer {
+    border-top:1px solid var(--border);
+    background:#090611;
+    text-align:center;
+    padding:30px 15px;
+    color:var(--muted);
+}
+
+footer img {
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+@media(max-width:850px) {
+    .products {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .shortcuts {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .stats {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:420px) {
+    .nav {
+        padding:10px;
+    }
+
+    .logo {
+        font-size:17px;
+    }
+
+    .logo img {
+        width:38px;
+        height:38px;
+    }
+
+    .hero {
+        padding:24px 17px;
+    }
+
+    .product img {
+        height:130px;
+    }
+
+    .product-body {
+        padding:10px;
+    }
+
+    .admin-grid {
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <a href="#" class="logo">
+            <img src="pc-zone.png"
+                 alt="PC ZONE"
+                 onerror="this.style.display='none'">
+            <span>PC ZONE</span>
+        </a>
+
+        <button class="btn" onclick="openLogin()">
+            ⚙️ แอดมิน
+        </button>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- แผงควบคุมผู้ดูแล -->
+    <section class="admin-panel">
+
+        <h2>🛠️ แผงควบคุม PC ZONE</h2>
+
+        <p>จัดการสินค้า ยอดเงิน และคำสั่งซื้อในเบราว์เซอร์นี้</p>
+
+        <button class="btn btn-primary" onclick="openSettings()">
+            ⚙️ ตั้งค่าเว็บไซต์
+        </button>
+
+        <button class="btn" onclick="openProductEditor()">
+            ＋ เพิ่มสินค้า
+        </button>
+
+        <button class="btn" onclick="showOrders()">
+            🧾 ประวัติคำสั่งซื้อ
+        </button>
+
+        <button class="btn" onclick="showWalletEditor()">
+            💰 จัดการกระเป๋าเงิน
+        </button>
+
+        <button class="btn" onclick="logout()">
+            ออกจากระบบ
+        </button>
+
+        <hr>
+
+        <h3>📦 ส่งมอบสินค้าให้ลูกค้า</h3>
+
+        <p>
+            เลือกคำสั่งซื้อ แล้วใส่คีย์หรือลิงก์ส่งมอบ
+            ระบบตัวอย่างนี้เก็บข้อมูลเฉพาะเครื่องที่เปิดเว็บ
+        </p>
+
+        <div class="field">
+            <label>หมายเลขคำสั่งซื้อ</label>
+            <input id="deliverOrderId" type="number">
+        </div>
+
+        <div class="field">
+            <label>คีย์หรือลิงก์ส่งมอบ</label>
+            <textarea id="deliverContent"
+                      placeholder="วางคีย์หรือลิงก์ที่นี่"></textarea>
+        </div>
+
+        <button class="btn btn-primary" onclick="deliverOrder()">
+            บันทึกข้อมูลส่งมอบ
+        </button>
+
+        <hr>
+
+        <h3>🔔 การแจ้งเตือน</h3>
+
+        <div id="adminNotifications">
+            <p>ยังไม่มีคำสั่งซื้อใหม่</p>
+        </div>
+
+    </section>
+
+    <!-- หน้าแรก -->
+    <section class="hero">
+
+        <span class="badge" id="heroBadge">
+            ★ PC ZONE OFFICIAL
+        </span>
+
+        <h1>
+            WELCOME TO<br>
+            <span class="gradient-text" id="heroName">
+                PC ZONE
+            </span>
+        </h1>
+
+        <p id="heroDesc">
+            ร้านค้าดิจิทัลของคุณ
+            เลือกดูสินค้า ตรวจสอบรายละเอียด
+            และสั่งซื้อได้สะดวกในที่เดียว
+        </p>
+
+        <div>
+            <button class="btn btn-primary"
+                    onclick="goProducts()">
+                🛒 เลือกซื้อสินค้า
+            </button>
+
+            <button class="btn"
+                    onclick="goContacts()">
+                ติดต่อร้าน
+            </button>
+        </div>
+
+    </section>
+
+    <!-- แบนเนอร์ -->
+    <section class="banner">
+        <h2 id="bannerTitle">PC ZONE DIGITAL STORE</h2>
+        <p id="bannerDesc">
+            สินค้าและบริการดิจิทัล
+            สอบถามรายละเอียดก่อนสั่งซื้อได้
+        </p>
+    </section>
+
+    <!-- สถิติ -->
+    <section class="stats">
+
+        <div class="stat">
+            <strong id="visitorCount">—</strong>
+            <small>ยอดผู้เข้าชม</small>
+        </div>
+
+        <div class="stat">
+            <strong id="productCount">0</strong>
+            <small>รายการสินค้า</small>
+        </div>
+
+        <div class="stat">
+            <strong id="walletDisplay">฿2,100</strong>
+            <small>กระเป๋าเงินในเครื่องนี้</small>
+        </div>
+
+        <div class="stat">
+            <strong>ONLINE</strong>
+            <small>สถานะเว็บไซต์</small>
+        </div>
+
+    </section>
+
+    <!-- ติดต่อ -->
+    <section class="section" id="contacts">
+
+        <h2><span>ติดต่อ</span> PC ZONE</h2>
+
+        <div class="shortcuts">
+
+            <a class="shortcut"
+               href="https://www.instagram.com/taweiopp__17/"
+               target="_blank"
+               rel="noopener">
+
+                <div class="icon">◎</div>
+                <strong>Instagram</strong>
+                <small>กดเพื่อเข้าหน้าร้าน</small>
+            </a>
+
+            <a class="shortcut"
+               href="https://discord.gg/QJJSaAyz"
+               target="_blank"
+               rel="noopener">
+
+                <div class="icon">◉</div>
+                <strong>Discord</strong>
+                <small>เข้าร่วมชุมชน</small>
+            </a>
+
+            <a class="shortcut"
+               href="#products"
+               onclick="goProducts()">
+
+                <div class="icon">▣</div>
+                <strong>สินค้า</strong>
+                <small>เลือกดูรายการสินค้า</small>
+            </a>
+
+            <a class="shortcut"
+               href="#howto">
+
+                <div class="icon">ⓘ</div>
+                <strong>วิธีสั่งซื้อ</strong>
+                <small>อ่านขั้นตอนการใช้งาน</small>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- สินค้า -->
+    <section class="section" id="products">
+
+        <h2><span>สินค้า</span> ทั้งหมด</h2>
+
+        <p style="color:var(--muted)">
+            กดดูรายละเอียดสินค้าและตรวจสอบราคาก่อนสั่งซื้อ
+        </p>
+
+        <div class="products" id="productList"></div>
+
+    </section>
+
+    <!-- วิธีใช้งาน -->
+    <section class="section" id="howto">
+
+        <h2>วิธี<span>สั่งซื้อ</span></h2>
+
+        <div class="shortcuts">
+
+            <div class="shortcut">
+                <div class="icon">①</div>
+                <strong>เลือกสินค้า</strong>
+                <small>ตรวจสอบรายละเอียดและราคา</small>
+            </div>
+
+            <div class="shortcut">
+                <div class="icon">②</div>
+                <strong>กรอกชื่อ</strong>
+                <small>ระบุชื่อผู้สั่งซื้อ</small>
+            </div>
+
+            <div class="shortcut">
+                <div class="icon">③</div>
+                <strong>ยืนยันคำสั่งซื้อ</strong>
+                <small>ตรวจสอบยอดเงินตัวอย่าง</small>
+            </div>
+
+            <div class="shortcut">
+                <div class="icon">④</div>
+                <strong>รับการแจ้งเตือน</strong>
+                <small>ตรวจสอบสถานะคำสั่งซื้อ</small>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <img src="pc-zone.png"
+         alt="PC ZONE"
+         onerror="this.style.display='none'">
+
+    <h2>PC ZONE</h2>
+
+    <p>ขอบคุณที่เข้าชมร้านของเรา</p>
+
+    <a class="btn btn-primary"
+       href="https://www.instagram.com/taweiopp__17/"
+       target="_blank"
+       rel="noopener">
+        ◎ ติดต่อ Instagram
+    </a>
+
+    <p>© 2026 PC ZONE</p>
+
+</footer>
+
+<!-- เข้าสู่ระบบ -->
+<div class="modal" id="loginModal">
+    <div class="dialog">
+
+        <h2>🔐 เข้าสู่ระบบแอดมิน</h2>
+
+        <p>ผู้เข้าชมสามารถปิดหน้าต่างนี้และดูเว็บไซต์ต่อได้</p>
+
+        <div class="field">
+            <label>ชื่อผู้ใช้</label>
+            <input id="adminUsername"
+                   autocomplete="username"
+                   placeholder="ชื่อผู้ดูแล">
+        </div>
+
+        <div class="field">
+            <label>รหัสผ่าน</label>
+            <input id="adminPassword"
+                   type="password"
+                   autocomplete="current-password"
+                   placeholder="รหัสผ่าน">
+        </div>
+
+        <p id="loginError"></p>
+
+        <div class="dialog-actions">
+            <button class="btn btn-primary" onclick="login()">
+                เข้าสู่ระบบ
+            </button>
+
+            <button class="btn" onclick="closeModal('loginModal')">
+                ข้าม
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- ตั้งค่าเว็บไซต์ -->
+<div class="modal" id="settingsModal">
+    <div class="dialog">
+
+        <h2>⚙️ ตั้งค่าเว็บไซต์</h2>
+
+        <div class="field">
+            <label>ชื่อร้าน</label>
+            <input id="setName">
+        </div>
+
+        <div class="field">
+            <label>ข้อความป้าย</label>
+            <input id="setBadge">
+        </div>
+
+        <div class="field">
+            <label>รายละเอียดหน้าแรก</label>
+            <textarea id="setDesc"></textarea>
+        </div>
+
+        <div class="field">
+            <label>หัวข้อแบนเนอร์</label>
+            <input id="setBannerTitle">
+        </div>
+
+        <div class="field">
+            <label>รายละเอียดแบนเนอร์</label>
+            <input id="setBannerDesc">
+        </div>
+
+        <div class="field">
+            <label>รูปปกเว็บไซต์ (ไม่เกิน 1.2 MB)</label>
+            <input id="setBannerImage"
+                   type="file"
+                   accept="image/*">
+        </div>
+
+        <div class="field">
+            <label>ตั้งเป้าหมายยอดผู้เข้าชม</label>
+            <input id="setVisitorGoal" type="number" min="1">
+            <small style="color:var(--muted)">
+                เป้าหมายไม่ใช่ยอดผู้เข้าชมจริง
+            </small>
+        </div>
+
+        <div class="dialog-actions">
+            <button class="btn btn-primary" onclick="saveSettings()">
+                บันทึก
+            </button>
+
+            <button class="btn" onclick="closeModal('settingsModal')">
+                ปิด
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- เพิ่มสินค้า -->
+<div class="modal" id="productModal">
+    <div class="dialog">
+
+        <h2>🛍️ เพิ่ม / แก้ไขสินค้า</h2>
+
+        <div class="field">
+            <label>ชื่อสินค้า</label>
+            <input id="pName">
+        </div>
+
+        <div class="field">
+            <label>ราคา (บาท)</label>
+            <input id="pPrice" type="number" min="0" step="0.01">
+        </div>
+
+        <div class="field">
+            <label>รายละเอียดสินค้า</label>
+            <textarea id="pDesc"></textarea>
+        </div>
+
+        <div class="field">
+            <label>รูปสินค้า (ไม่เกิน 1.2 MB)</label>
+            <input id="pImage" type="file" accept="image/*">
+        </div>
+
+        <div class="dialog-actions">
+            <button class="btn btn-primary" onclick="saveProduct()">
+                บันทึกสินค้า
+            </button>
+
+            <button class="btn" onclick="closeModal('productModal')">
+                ยกเลิก
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- รายละเอียดและซื้อสินค้า -->
+<div class="modal" id="detailModal">
+    <div class="dialog">
+
+        <h2 id="detailName">รายละเอียดสินค้า</h2>
+
+        <img id="detailImage"
+             alt=""
+             style="display:none;width:100%;max-height:220px;object-fit:contain;border-radius:12px">
+
+        <p id="detailDesc"></p>
+
+        <div class="price" id="detailPrice"></div>
+
+        <div class="field">
+            <label>ชื่อผู้สั่งซื้อ</label>
+            <input id="buyerName" maxlength="80"
+                   placeholder="กรอกชื่อของคุณ">
+        </div>
+
+        <div class="field">
+            <label>รายละเอียดเพิ่มเติม</label>
+            <textarea id="buyerNote" maxlength="500"
+                      placeholder="ข้อความเพิ่มเติม (ถ้ามี)"></textarea>
+        </div>
+
+        <div class="notice">
+            <strong>💰 ยอดเงินตัวอย่าง:</strong>
+            <span id="buyerWallet">฿2,100</span>
+        </div>
+
+        <p id="orderMessage"></p>
+
+        <div class="dialog-actions">
+            <button class="btn btn-primary" onclick="placeOrder()">
+                🛒 ยืนยันสั่งซื้อ
+            </button>
+
+            <button class="btn" onclick="closeModal('detailModal')">
+                ยกเลิก
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- แจ้งเตือน -->
+<div class="modal" id="noticeModal">
+    <div class="dialog">
+
+        <h2>🔔 แจ้งเตือนคำสั่งซื้อ</h2>
+
+        <div class="notice" id="noticeText"></div>
+
+        <button class="btn btn-primary btn-block"
+                onclick="closeModal('noticeModal')">
+            ตกลง
+        </button>
+
+    </div>
+</div>
+
+<!-- กระเป๋าเงิน -->
+<div class="modal" id="walletModal">
+    <div class="dialog">
+
+        <h2>💰 จัดการกระเป๋าเงิน</h2>
+
+        <p>ยอดเงินตัวอย่างในเบราว์เซอร์นี้</p>
+
+        <div class="price" id="walletModalBalance">฿2,100</div>
+
+        <div class="field">
+            <label>ตั้งยอดเงินใหม่ (บาท)</label>
+            <input id="walletInput" type="number" min="0" step="0.01">
+        </div>
+
+        <div class="dialog-actions">
+            <button class="btn btn-primary" onclick="adminSetWallet()">
+                บันทึกยอดเงิน
+            </button>
+
+            <button class="btn" onclick="closeModal('walletModal')">
+                ปิด
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- ประวัติคำสั่งซื้อ -->
+<div class="modal" id="ordersModal">
+    <div class="dialog">
+
+        <h2>🧾 ประวัติคำสั่งซื้อ</h2>
+
+        <div id="ordersList"></div>
+
+        <button class="btn btn-block"
+                onclick="closeModal('ordersModal')">
+            ปิด
+        </button>
+
+    </div>
+</div>
+
+<script>
+"use strict";
+
+/*
+ * PC ZONE DEMO
+ *
+ * ตัวอย่างนี้ใช้ localStorage ในเบราว์เซอร์
+ * ยังไม่ใช่ระบบร้านค้าออนไลน์ที่มีฐานข้อมูลส่วนกลาง
+ *
+ * รหัสแอดมินใน JavaScript ไม่ปลอดภัยสำหรับใช้งานจริง
+ * อย่าเก็บรหัสผ่านจริง คีย์สำคัญ หรือข้อมูลการชำระเงินจริงไว้ที่นี่
+ */
+
+const ADMIN_USERNAME = "12";
+const ADMIN_PASSWORD = "109";
+
+const STORAGE = {
+    settings: "pczone_settings_v2",
+    products: "pczone_products_v2",
+    wallet: "pczone_wallet_v2",
+    orders: "pczone_orders_v2"
+};
+
+let isAdmin = false;
+let editingId = null;
+let selectedProductId = null;
+
+let settings = load(STORAGE.settings, {
+    name: "PC ZONE",
+    badge: "★ PC ZONE OFFICIAL",
+    desc: "ร้านค้าดิจิทัลของคุณ เลือกดูสินค้าและสั่งซื้อได้สะดวก",
+    bannerTitle: "PC ZONE DIGITAL STORE",
+    bannerDesc: "สินค้าและบริการดิจิทัล",
+    bannerImage: "",
+    visitorGoal: 10000000
+});
+
+let products = load(STORAGE.products, [
+    {
+        id: 1,
+        name: "สินค้าแนะนำ 01",
+        price: 39,
+        desc: "รายละเอียดสินค้า กรุณาอ่านก่อนสั่งซื้อ",
+        image: "",
+        delivery: ""
+    },
+    {
+        id: 2,
+        name: "สินค้าแนะนำ 02",
+        price: 59,
+        desc: "สินค้าดิจิทัลจาก PC ZONE",
+        image: "",
+        delivery: ""
+    },
+    {
+        id: 3,
+        name: "แพ็กเกจพิเศษ",
+        price: 99,
+        desc: "สอบถามข้อมูลเพิ่มเติมก่อนสั่งซื้อ",
+        image: "",
+        delivery: ""
+    },
+    {
+        id: 4,
+        name: "บริการดิจิทัล",
+        price: 19,
+        desc: "รายละเอียดบริการจากทางร้าน",
+        image: "",
+        delivery: ""
+    }
+]);
+
+let walletBalance = load(STORAGE.wallet, 2100);
+
+let orders = load(STORAGE.orders, []);
+
+function load(key, fallback) {
+    try {
+        const value = localStorage.getItem(key);
+
+        if (value === null) return fallback;
+
+        return JSON.parse(value);
+    } catch (error) {
+        return fallback;
+    }
+}
+
+function persist(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch (error) {
+        alert("บันทึกข้อมูลไม่สำเร็จ พื้นที่จัดเก็บอาจเต็ม");
+        return false;
+    }
+}
+
+function closeModal(id) {
+    document.getElementById(id).classList.remove("show");
+}
+
+function openLogin() {
+    document.getElementById("adminUsername").value = "";
+    document.getElementById("adminPassword").value = "";
+    document.getElementById("loginError").textContent = "";
+    document.getElementById("loginModal").classList.add("show");
+}
+
+function login() {
+    const username =
+        document.getElementById("adminUsername").value;
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+    if (
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+    ) {
+        isAdmin = true;
+
+        document.body.classList.add("admin-on");
+
+        closeModal("loginModal");
+
+        renderProducts();
+        renderNotifications();
+
+        alert("เข้าสู่โหมดผู้ดูแลแล้ว");
+    } else {
+        document.getElementById("loginError").textContent =
+            "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+    }
+}
+
+function logout() {
+    isAdmin = false;
+
+    document.body.classList.remove("admin-on");
+
+    renderProducts();
+}
+
+function openSettings() {
+    if (!isAdmin) return;
+
+    document.getElementById("setName").value = settings.name;
+    document.getElementById("setBadge").value = settings.badge;
+    document.getElementById("setDesc").value = settings.desc;
+
+    document.getElementById("setBannerTitle").value =
+        settings.bannerTitle;
+
+    document.getElementById("setBannerDesc").value =
+        settings.bannerDesc;
+
+    document.getElementById("setVisitorGoal").value =
+        settings.visitorGoal;
+
+    document.getElementById("setBannerImage").value = "";
+
+    document.getElementById("settingsModal").classList.add("show");
+}
+
+async function saveSettings() {
+    if (!isAdmin) return;
+
+    const previous = {...settings};
+
+    settings.name =
+        document.getElementById("setName").value.trim() ||
+        "PC ZONE";
+
+    settings.badge =
+        document.getElementById("setBadge").value.trim();
+
+    settings.desc =
+        document.getElementById("setDesc").value.trim();
+
+    settings.bannerTitle =
+        document.getElementById("setBannerTitle").value.trim();
+
+    settings.bannerDesc =
+        document.getElementById("setBannerDesc").value.trim();
+
+    const goal = Number(
+        document.getElementById("setVisitorGoal").value
+    );
+
+    settings.visitorGoal =
+        Number.isFinite(goal) && goal > 0
+        ? goal
+        : 10000000;
+
+    const file =
+        document.getElementById("setBannerImage").files[0];
+
+    if (file) {
+        if (file.size > 1200000) {
+            alert("รูปต้องมีขนาดไม่เกิน 1.2 MB");
+            settings = previous;
+            return;
+        }
+
+        try {
+            settings.bannerImage = await readImage(file);
+        } catch (error) {
+            alert("อ่านรูปภาพไม่สำเร็จ");
+            settings = previous;
+            return;
+        }
+    }
+
+    if (!persist(STORAGE.settings, settings)) {
+        settings = previous;
+        return;
+    }
+
+    applySettings();
+
+    closeModal("settingsModal");
+
+    alert("บันทึกการตั้งค่าแล้ว");
+}
+
+function applySettings() {
+    document.getElementById("heroBadge").textContent =
+        settings.badge;
+
+    document.getElementById("heroName").textContent =
+        settings.name;
+
+    document.getElementById("heroDesc").textContent =
+        settings.desc;
+
+    document.getElementById("bannerTitle").textContent =
+        settings.bannerTitle;
+
+    document.getElementById("bannerDesc").textContent =
+        settings.bannerDesc;
+
+    const hero = document.querySelector(".hero");
+
+    if (settings.bannerImage) {
+        hero.style.backgroundImage =
+            `linear-gradient(90deg,#090611f5,#09061191),url("${settings.bannerImage}")`;
+    } else {
+        hero.style.backgroundImage =
+            'linear-gradient(90deg,#090611f5,#09061191),url("pc-zone.png")';
+    }
+
+    document.title = settings.name + " | Digital Store";
+}
+
+function readImage(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+    });
+}
+
+function openProductEditor(id = null) {
+    if (!isAdmin) return;
+
+    editingId = id;
+
+    const product = products.find(p => p.id === id);
+
+    document.getElementById("pName").value =
+        product ? product.name : "";
+
+    document.getElementById("pPrice").value =
+        product ? product.price : "";
+
+    document.getElementById("pDesc").value =
+        product ? product.desc : "";
+
+    document.getElementById("pImage").value = "";
+
+    document.getElementById("productModal").classList.add("show");
+}
+
+async function saveProduct() {
+    if (!isAdmin) return;
+
+    const name =
+        document.getElementById("pName").value.trim();
+
+    const price =
+        Number(document.getElementById("pPrice").value);
+
+    const desc =
+        document.getElementById("pDesc").value.trim();
+
+    if (!name) {
+        alert("กรุณากรอกชื่อสินค้า");
+        return;
+    }
+
+    if (!Number.isFinite(price) || price < 0) {
+        alert("กรุณากรอกราคาที่ถูกต้อง");
+        return;
+    }
+
+    const old = products.find(p => p.id === editingId);
+
+    const product = {
+        id: editingId || Date.now(),
+        name,
+        price,
+        desc,
+        image: old ? old.image : "",
+        delivery: old ? old.delivery : ""
+    };
+
+    const file = document.getElementById("pImage").files[0];
+
+    if (file) {
+        if (file.size > 1200000) {
+            alert("รูปต้องมีขนาดไม่เกิน 1.2 MB");
+            return;
+        }
+
+        try {
+            product.image = await readImage(file);
+        } catch (error) {
+            alert("อ่านรูปภาพไม่สำเร็จ");
+            return;
+        }
+    }
+
+    const updated = editingId
+        ? products.map(p => p.id === editingId ? product : p)
+        : [product, ...products];
+
+    if (!persist(STORAGE.products, updated)) return;
+
+    products = updated;
+
+    renderProducts();
+
+    closeModal("productModal");
+}
+
+function deleteProduct(id) {
+    if (!isAdmin) return;
+
+    if (!confirm("ยืนยันการลบสินค้านี้?")) return;
+
+    const updated = products.filter(p => p.id !== id);
+
+    if (!persist(STORAGE.products, updated)) return;
+
+    products = updated;
+
+    renderProducts();
+}
+
+function renderProducts() {
+    const list = document.getElementById("productList");
+
+    list.replaceChildren();
+
+    document.getElementById("productCount").textContent =
+        products.length;
+
+    products.forEach(product => {
+        const card = document.createElement("article");
+        card.className = "product";
+
+        const img = document.createElement("img");
+
+        img.alt = product.name;
+
+        img.src = product.image || makePlaceholder();
+
+        card.appendChild(img);
+
+        const body = document.createElement("div");
+        body.className = "product-body";
+
+        const title = document.createElement("h3");
+        title.textContent = product.name;
+
+        const desc = document.createElement("p");
+        desc.textContent = product.desc;
+
+        const price = document.createElement("div");
+        price.className = "price";
+
+        price.textContent =
+            "฿" + Number(product.price).toLocaleString("th-TH");
+
+        const detail = document.createElement("button");
+
+        detail.className = "btn btn-block";
+        detail.textContent = "ดูรายละเอียด";
+        detail.onclick = () => showProductDetails(product.id);
+
+        const buy = document.createElement("button");
+
+        buy.className = "btn btn-primary btn-block";
+        buy.textContent = "🛒 ซื้อสินค้า";
+        buy.onclick = () => showProductDetails(product.id);
+
+        body.append(title, desc, price, detail, buy);
+
+        if (isAdmin) {
+            const edit = document.createElement("button");
+
+            edit.className = "btn btn-block";
+            edit.textContent = "✏️ แก้ไข";
+            edit.onclick = () => openProductEditor(product.id);
+
+            const remove = document.createElement("button");
+
+            remove.className = "btn btn-danger btn-block";
+            remove.textContent = "🗑️ ลบสินค้า";
+            remove.onclick = () => deleteProduct(product.id);
+
+            body.append(edit, remove);
+        }
+
+        card.appendChild(body);
+        list.appendChild(card);
+    });
+}
+
+function makePlaceholder() {
+    return "data:image/svg+xml," + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="400" height="250">
+            <rect width="100%" height="100%" fill="#21132f"/>
+            <text x="50%" y="50%"
+                  text-anchor="middle"
+                  font-size="40"
+                  font-weight="bold"
+                  fill="#00d9ff">PC ZONE</text>
+        </svg>
+    `);
+}
+
+function showProductDetails(id) {
+    const product = products.find(p => p.id === id);
+
+    if (!product) return;
+
+    selectedProductId = id;
+
+    document.getElementById("detailName").textContent =
+        product.name;
+
+    document.getElementById("detailDesc").textContent =
+        product.desc;
+
+    document.getElementById("detailPrice").textContent =
+        "฿" + Number(product.price).toLocaleString("th-TH");
+
+    const image = document.getElementById("detailImage");
+
+    if (product.image) {
+        image.src = product.image;
+        image.style.display = "block";
+    } else {
+        image.style.display = "none";
+        image.removeAttribute("src");
+    }
+
+    document.getElementById("buyerName").value = "";
+    document.getElementById("buyerNote").value = "";
+    document.getElementById("orderMessage").textContent = "";
+
+    updateWalletDisplay();
+
+    document.getElementById("detailModal").classList.add("show");
+}
+
+function placeOrder() {
+    const product = products.find(
+        p => p.id === selectedProductId
+    );
+
+    if (!product) return;
+
+    const buyer =
+        document.getElementById("buyerName").value.trim();
+
+    const note =
+        document.getElementById("buyerNote").value.trim();
+
+    if (!buyer) {
+        alert("กรุณากรอกชื่อผู้สั่งซื้อ");
+        return;
+    }
+
+    const price = Number(product.price);
+
+    if (!Number.isFinite(price) || price < 0) {
+        alert("ราคาสินค้าไม่ถูกต้อง");
+        return;
+    }
+
+    if (walletBalance < price) {
+        document.getElementById("orderMessage").textContent =
+            "ยอดเงินตัวอย่างไม่เพียงพอ";
+
+        return;
+    }
+
+    const order = {
+        id: Date.now(),
+        buyer,
+        note,
+        productId: product.id,
+        product: product.name,
+        price,
+        time: new Date().toLocaleString("th-TH"),
+        status: "รอดำเนินการ",
+        delivery: ""
+    };
+
+    const newOrders = [...orders, order];
+
+    /*
+     * บันทึกคำสั่งซื้อก่อนปรับยอดเงิน
+     * เพื่อไม่ให้หักยอดหากบันทึกคำสั่งซื้อไม่สำเร็จ
+     */
+    if (!persist(STORAGE.orders, newOrders)) return;
+
+    const previousBalance = walletBalance;
+
+    walletBalance -= price;
+
+    if (!persist(STORAGE.wallet, walletBalance)) {
+        walletBalance = previousBalance;
+        return;
+    }
+
+    orders = newOrders;
+
+    closeModal("detailModal");
+
+    updateWalletDisplay();
+
+    document.getElementById("noticeText").textContent =
+        "สั่งซื้อสำเร็จในระบบตัวอย่าง\n" +
+        "ชื่อผู้สั่งซื้อ: " + order.buyer + "\n" +
+        "สินค้า: " + order.product + "\n" +
+        "ราคา: ฿" + order.price.toLocaleString("th-TH") + "\n" +
+        "เวลาสั่งซื้อ: " + order.time + "\n" +
+        "สถานะ: " + order.status;
+
+    document.getElementById("noticeModal").classList.add("show");
+
+    renderNotifications();
+}
+
+function updateWalletDisplay() {
+    const text =
+        "฿" + Number(walletBalance).toLocaleString("th-TH");
+
+    document.getElementById("walletDisplay").textContent = text;
+
+    document.getElementById("buyerWallet").textContent = text;
+
+    document.getElementById("walletModalBalance").textContent = text;
+}
+
+function showWalletEditor() {
+    if (!isAdmin) return;
+
+    document.getElementById("walletInput").value = walletBalance;
+
+    updateWalletDisplay();
+
+    document.getElementById("walletModal").classList.add("show");
+}
+
+function adminSetWallet() {
+    if (!isAdmin) return;
+
+    const value = Number(
+        document.getElementById("walletInput").value
+    );
+
+    if (!Number.isFinite(value) || value < 0) {
+        alert("กรุณาระบุยอดเงินที่ถูกต้อง");
+        return;
+    }
+
+    if (!persist(STORAGE.wallet, value)) return;
+
+    walletBalance = value;
+
+    updateWalletDisplay();
+
+    closeModal("walletModal");
+
+    alert("ปรับยอดเงินตัวอย่างแล้ว");
+}
+
+function showOrders() {
+    if (!isAdmin) return;
+
+    const list = document.getElementById("ordersList");
+
+    list.replaceChildren();
+
+    if (!orders.length) {
+        const empty = document.createElement("p");
+
+        empty.textContent = "ยังไม่มีคำสั่งซื้อ";
+
+        list.appendChild(empty);
+    }
+
+    [...orders].reverse().forEach(order => {
+        const item = document.createElement("div");
+
+        item.className = "order-item";
+
+        const title = document.createElement("strong");
+
+        title.textContent =
+            "#" + order.id + " — " + order.product;
+
+        const details = document.createElement("p");
+
+        details.textContent =
+            "ลูกค้า: " + order.buyer +
+            " | ราคา: ฿" + order.price +
+            " | สถานะ: " + order.status;
+
+        const time = document.createElement("small");
+
+        time.textContent =
+            "เวลาสั่งซื้อ: " + order.time;
+
+        item.append(title, details, time);
+
+        if (order.delivery) {
+            const delivery = document.createElement("p");
+
+            delivery.textContent =
+                "มีข้อมูลส่งมอบแล้ว";
+
+            item.appendChild(delivery);
+        }
+
+        list.appendChild(item);
+    });
+
+    document.getElementById("ordersModal").classList.add("show");
+}
+
+function deliverOrder() {
+    if (!isAdmin) return;
+
+    const id = Number(
+        document.getElementById("deliverOrderId").value
+    );
+
+    const content =
+        document.getElementById("deliverContent").value.trim();
+
+    if (!content) {
+        alert("กรุณาใส่คีย์หรือลิงก์ส่งมอบ");
+        return;
+    }
+
+    const index = orders.findIndex(order => order.id === id);
+
+    if (index === -1) {
+        alert("ไม่พบคำสั่งซื้อหมายเลขนี้");
+        return;
+    }
+
+    const updated = orders.map(order => {
+        if (order.id !== id) return order;
+
+        return {
+            ...order,
+            delivery: content,
+            status: "บันทึกข้อมูลส่งมอบแล้ว"
+        };
+    });
+
+    if (!persist(STORAGE.orders, updated)) return;
+
+    orders = updated;
+
+    document.getElementById("deliverContent").value = "";
+
+    renderNotifications();
+
+    alert("บันทึกข้อมูลส่งมอบในเบราว์เซอร์นี้แล้ว");
+}
+
+function renderNotifications() {
+    const area = document.getElementById("adminNotifications");
+
+    area.replaceChildren();
+
+    if (!orders.length) {
+        const empty = document.createElement("p");
+
+        empty.textContent = "ยังไม่มีคำสั่งซื้อใหม่";
+
+        area.appendChild(empty);
+
+        return;
+    }
+
+    orders.slice(-5).reverse().forEach(order => {
+        const item = document.createElement("div");
+
+        item.className = "notice";
+
+        item.textContent =
+            "🔔 " + order.buyer +
+            " | " + order.product +
+            " | ฿" + order.price +
+            " | " + order.time;
+
+        area.appendChild(item);
+    });
+}
+
+function goProducts() {
+    document.getElementById("products").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function goContacts() {
+    document.getElementById("contacts").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function initVisitorDisplay() {
+    /*
+     * ยังไม่มีระบบนับผู้เข้าชมจากส่วนกลาง
+     * จึงแสดงเป้าหมายแทนยอดจริง เพื่อไม่ให้ข้อมูลคลาดเคลื่อน
+     */
+    document.getElementById("visitorCount").textContent =
+        "เป้าหมาย " +
+        Number(settings.visitorGoal || 10000000)
+        .toLocaleString("th-TH");
+}
+
+applySettings();
+renderProducts();
+renderNotifications();
+updateWalletDisplay();
+initVisitorDisplay();
+</script>
+
+</body>
+</html>
